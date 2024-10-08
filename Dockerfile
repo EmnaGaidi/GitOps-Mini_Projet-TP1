@@ -1,4 +1,4 @@
-FROM python:3.9.7
+FROM python:3.8-slim
 
 WORKDIR /app
 
@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["py", "app.py"]
+CMD ["python", "app.py"]
