@@ -1,0 +1,18 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build -t emnagaidi/flask-app:$CI_COMMIT_SHORT_SHA .
+    - docker push emnagaidi/flask-app:$CI_COMMIT_SHORT_SHA
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - kubectl set image deployment/flask-app flask-app=emnagaidi/flask-app:$CI_COMMIT_SHORT_SHA
+  only:
+    - main
