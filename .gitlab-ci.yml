@@ -9,7 +9,7 @@ build:
     - docker push emnagaidi/flask-app:$CI_COMMIT_SHORT_SHA
   only:
     - main
-
+#deploy
 deploy:
   stage: deploy
   script:
